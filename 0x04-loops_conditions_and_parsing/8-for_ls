@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#script that displays content of the cd in list format
+
+list="$(ls)"
+for x in $list; do
+    echo "$x" | cut -d '-' -f2
+done

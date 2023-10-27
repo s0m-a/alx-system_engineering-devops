@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#script that display the content of the file
+#Your script should only display:
+#username
+#user id
+#Home directory path for the user
+
+input="/etc/passwd"
+while IFS= read -r line
+do
+  echo "$line" | cut -d':' -f1,3,6
+done < "$input"

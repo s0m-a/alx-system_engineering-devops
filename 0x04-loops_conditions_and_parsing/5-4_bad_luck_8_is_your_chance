@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Loops from 1 to 10 and displays:
+#"bad luck" for the 4th loop
+#"good luck" for the 8th loop
+#"Best School" for all others
+x=0
+while [ $x -le 9 ]
+do
+	if [ $x -eq 3 ]
+	then
+		echo "bad luck"
+	elif [ $x -eq 7 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((x++))
+done
