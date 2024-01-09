@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+eval $("ssh-agent")
+
+ssh-add /root/.ssh/id_rsa
+
+# Username and IP Address 
+ssh ubuntu@100.26.164.183
