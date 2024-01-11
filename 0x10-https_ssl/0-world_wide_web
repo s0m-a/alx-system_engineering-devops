@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#script which display information about subdomains
+domain () {
+    script=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+    echo "$2 $script" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+}
+
+if [ "$#" == 1 ]
+then
+  domain "$1" "www"
+  domain "$1" "lb-01"
+  domain "$1" "web-01"
+  domain "$1" "web-02"
+elif [ "$#" == 2 ]
+then
+  domain "$1" "$2"
+fi
