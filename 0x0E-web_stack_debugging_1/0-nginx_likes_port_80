@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Changes port
-
-sed -i 's/\/etc\/nginx\/sites-enabled\/\*/\/etc\/nginx\/sites-enabled\/default/g' /etc/nginx/nginx.conf
-sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
-service nginx restart
+# Updates package list and install Nginx
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
