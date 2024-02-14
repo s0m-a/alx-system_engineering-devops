@@ -4,8 +4,9 @@ import requests
 
 
 def top_ten(subreddit):
-    """prints the titles of the first 10 hot posts
-    listed for a given subreddit"""
+    """ prints the titles of the first 10 hot posts
+    ddlisted for a given subreddit
+    """
     try:
         url = f"https://www.reddit.com/r/{subreddit}/hot.json"
         headers = {"User-Agent": "MyRedditBot"}

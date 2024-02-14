@@ -1,32 +1,26 @@
 #!/usr/bin/python3
-"""Python script module for retrieving top titles from a subreddit."""
-
+"""Module with a python script"""
 import requests
-
 after = None
 
 
-def get_top_titles(subreddit, title_list=[]):
-    """Recursively fetches top titles from the specified subreddit."""
+def recurse(subreddit, hot_list=[]):
+    """Method that uses recursive method to get top 10 hot titles"""
     global after
     headers = {'User-Agent': 'Reddit API'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     params = {'after': after}
-    
-    response = requests.get(url, headers=headers, allow_redirects=False, params=params)
-    
+    response = requests.get(
+            url, headers=headers, allow_redirects=False, params=params)
+
     if response.status_code == 200:
-        next_page = response.json().get('data').get('after')
-        
-        if next_page is not None:
-            after = next_page
-            get_top_titles(subreddit, title_list)
-        
-        titles = response.json().get('data').get('children')
-        for title in titles:
-            title_list.append(title.get('data').get('title'))
-        
-        return title_list
-    
+        nextO = response.json().get('data').get('after')
+        if nextO is not None:
+            after = next_obj
+            recurse(subreddit, hot_list)
+        listT = response.json().get('data').get('children')
+        for oTitle in listT:
+            hotList.append(oTitle.get('data').get('title'))
+        return hotList
     else:
         return None
